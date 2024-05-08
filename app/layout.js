@@ -14,10 +14,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <section>
-          <Navbar />
-        </section>
         <AppContextProvider>
+          <section>
+            <Navbar />
+          </section>
           <section>{children}</section>
         </AppContextProvider>
       </body>

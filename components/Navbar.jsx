@@ -1,11 +1,14 @@
 // components/Navbar.js
 "use client";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Link from "next/link";
+import { AppContext } from "@/context/AppContext";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
+  const { isLogin } = useContext(AppContext);
+
 
   return (
     <nav className="bg-[#Ecf0f4] p-4 z-40">
@@ -33,15 +36,48 @@ export default function Navbar() {
             {profileDropdownOpen && (
               <div className="absolute right-0 mt-2 w-40 bg-white shadow-lg border rounded-lg z-20">
                 <ul className="py-2">
-                  <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                    <Link href="/my-account">My Account</Link>
-                  </li>
-                  <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                    <Link href="/my-events">My Events</Link>
-                  </li>
-                  <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                    <Link href="/">Logout</Link>
-                  </li>
+                  {isLogin && (
+                    <>
+                      <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                        <Link
+                          onClick={() =>
+                            setProfileDropdownOpen(!profileDropdownOpen)
+                          }
+                          href="/my-account">
+                          My Account
+                        </Link>
+                      </li>
+                      <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                        <Link
+                          onClick={() =>
+                            setProfileDropdownOpen(!profileDropdownOpen)
+                          }
+                          href="/my-events">
+                          My Events
+                        </Link>
+                      </li>
+                      <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                        <Link
+                          onClick={() =>
+                            setProfileDropdownOpen(!profileDropdownOpen)
+                          }
+                          href="/">
+                          Logout
+                        </Link>
+                      </li>
+                    </>
+                  )}
+                  {!isLogin && (
+                      <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                        <Link
+                          onClick={() =>
+                            setProfileDropdownOpen(!profileDropdownOpen)
+                          }
+                          href="/signIn">
+                          Sign In
+                        </Link>
+                      </li>
+                  )}
                 </ul>
               </div>
             )}

@@ -35,7 +35,7 @@ const AllTasksPageCard = ({
   );
 };
 
-const page = () => {
+const Page = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -51,7 +51,7 @@ const page = () => {
       eventDescription:
         "Event 1 Description and some more text to make it look like a description.",
       eventImageURL: "/assets/event1.jpg",
-      eventLink: "/task-page",
+      eventLink: "/event-page",
     },
     {
       eventID: 2,
@@ -59,7 +59,7 @@ const page = () => {
       eventDescription:
         "Event 2 Description and some more text to make it look like a description.",
       eventImageURL: "/assets/event2.jpg",
-      eventLink: "/task-page",
+      eventLink: "/event-page",
     },
     {
       eventID: 3,
@@ -67,7 +67,7 @@ const page = () => {
       eventDescription:
         "Event 3 Description and some more text to make it look like a description.",
       eventImageURL: "/assets/event3.jpg",
-      eventLink: "/task-page",
+      eventLink: "/event-page",
     },
     {
       eventID: 4,
@@ -75,7 +75,7 @@ const page = () => {
       eventDescription:
         "Event 4 Description and some more text to make it look like a description.",
       eventImageURL: "/assets/event1.jpg",
-      eventLink: "/task-page",
+      eventLink: "/event-page",
     },
     {
       eventID: 5,
@@ -83,7 +83,7 @@ const page = () => {
       eventDescription:
         "Event 5 Description and some more text to make it look like a description.",
       eventImageURL: "/assets/event2.jpg",
-      eventLink: "/task-page",
+      eventLink: "/event-page",
     },
     {
       eventID: 6,
@@ -91,7 +91,7 @@ const page = () => {
       eventDescription:
         "Event 6 Description and some more text to make it look like a description.",
       eventImageURL: "/assets/event3.jpg",
-      eventLink: "/task-page",
+      eventLink: "/event-page",
     },
     {
       eventID: 7,
@@ -99,7 +99,7 @@ const page = () => {
       eventDescription:
         "Event 7 Description and some more text to make it look like a description.",
       eventImageURL: "/assets/event1.jpg",
-      eventLink: "/task-page",
+      eventLink: "/event-page",
     },
     {
       eventID: 8,
@@ -107,7 +107,7 @@ const page = () => {
       eventDescription:
         "Event 8 Description and some more text to make it look like a description.",
       eventImageURL: "/assets/event2.jpg",
-      eventLink: "/task-page",
+      eventLink: "/event-page",
     },
   ];
 
@@ -133,4 +133,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

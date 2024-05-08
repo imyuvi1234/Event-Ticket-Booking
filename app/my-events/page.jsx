@@ -24,7 +24,9 @@ const MyTasksPageCard = ({
             {eventTitle}
           </div>
           <p className="mt-2 text-color1">{eventDescription}</p>
-          <Link href={`${eventLink}/${eventID}`} className="bg-color3 hover:bg-color1 hover:text-color2 text-white text-center p-1 rounded-md w-40 mt-3">
+          <Link
+            href={`${eventLink}/${eventID}`}
+            className="bg-color3 hover:bg-color1 hover:text-color2 text-white text-center p-1 rounded-md w-40 mt-3">
             Browse Event
           </Link>
         </div>
@@ -49,7 +51,7 @@ const page = () => {
       eventDescription:
         "Event 1 Description and some more text to make it look like a description.",
       eventImageURL: "/assets/event1.jpg",
-      eventLink: "/task-page",
+      eventLink: "/event-page",
     },
     {
       eventID: 2,
@@ -57,7 +59,7 @@ const page = () => {
       eventDescription:
         "Event 2 Description and some more text to make it look like a description.",
       eventImageURL: "/assets/event2.jpg",
-      eventLink: "/task-page",
+      eventLink: "/event-page",
     },
     {
       eventID: 3,
@@ -65,7 +67,7 @@ const page = () => {
       eventDescription:
         "Event 3 Description and some more text to make it look like a description.",
       eventImageURL: "/assets/event3.jpg",
-      eventLink: "task-page",
+      eventLink: "event-page",
     },
     {
       eventID: 4,
@@ -73,7 +75,7 @@ const page = () => {
       eventDescription:
         "Event 4 Description and some more text to make it look like a description.",
       eventImageURL: "/assets/event1.jpg",
-      eventLink: "/task-page",
+      eventLink: "/event-page",
     },
     {
       eventID: 5,
@@ -81,7 +83,7 @@ const page = () => {
       eventDescription:
         "Event 5 Description and some more text to make it look like a description.",
       eventImageURL: "/assets/event2.jpg",
-      eventLink: "/task-page",
+      eventLink: "/event-page",
     },
     {
       eventID: 6,
@@ -89,7 +91,7 @@ const page = () => {
       eventDescription:
         "Event 6 Description and some more text to make it look like a description.",
       eventImageURL: "/assets/event3.jpg",
-      eventLink: "/task-page",
+      eventLink: "/event-page",
     },
     {
       eventID: 7,
@@ -97,7 +99,7 @@ const page = () => {
       eventDescription:
         "Event 7 Description and some more text to make it look like a description.",
       eventImageURL: "/assets/event1.jpg",
-      eventLink: "/task-page",
+      eventLink: "/event-page",
     },
     {
       eventID: 8,
@@ -105,7 +107,7 @@ const page = () => {
       eventDescription:
         "Event 8 Description and some more text to make it look like a description.",
       eventImageURL: "/assets/event2.jpg",
-      eventLink: "/task-page",
+      eventLink: "/event-page",
     },
   ];
 
@@ -117,7 +119,9 @@ const page = () => {
         </div>
       ) : (
         <div>
-          <h1 className="text-3xl font-bold mb-4 text-color1 text-center my-[3rem] underline">My Events</h1>
+          <h1 className="text-3xl font-bold mb-4 text-color1 text-center my-[3rem] underline">
+            My Events
+          </h1>
           <div className="flex flex-col w-full">
             {myTasksPageCardDetails.map((event, index) => (
               <MyTasksPageCard key={index} {...event} />

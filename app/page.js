@@ -1,21 +1,23 @@
 "use client";
+import Link from "next/link";
 import React from "react";
 import { useEffect } from "react";
 import { Carousel, initTWE } from "tw-elements";
 
 const EventCardsHomaPage = ({
+  eventId,
   image,
-  enventLink,
+  eventLink,
   eventName,
   eventDescription,
 }) => {
   return (
     <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 my-2">
-      <a href={enventLink}>
+      <a href={eventLink}>
         <img class="rounded-t-lg" src={image} alt="" />
       </a>
       <div class="p-5">
-        <a href={enventLink}>
+        <a href={eventLink}>
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             {eventName}
           </h5>
@@ -23,8 +25,8 @@ const EventCardsHomaPage = ({
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
           {eventDescription}
         </p>
-        <a
-          href={enventLink}
+        <Link
+          href={`${eventLink}/${eventId}`}
           class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white hover:text-color2 bg-color3 rounded-lg hover:bg-color1 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
           Browse Event
           <svg
@@ -35,13 +37,13 @@ const EventCardsHomaPage = ({
             viewBox="0 0 14 10">
             <path
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="M1 5h12m0 0L9 1m4 4L9 9"
             />
           </svg>
-        </a>
+        </Link>
       </div>
     </div>
   );
@@ -62,21 +64,21 @@ export default function Home() {
       eventName: "Event 1",
       eventDescription: "Some Description for Event 1",
       image: "/assets/event1.jpg",
-      enventLink: "/event1",
+      eventLink: "/event-page",
     },
     {
       eventId: 1,
       eventName: "Event 2",
       eventDescription: "Some Description for Event 2",
       image: "/assets/event2.jpg",
-      enventLink: "/event2",
+      eventLink: "/event-page",
     },
     {
       eventId: 1,
       eventName: "Event 3",
       eventDescription: "Some Description for Event 3",
       image: "/assets/event3.jpg",
-      enventLink: "/event3",
+      eventLink: "/event-page",
     },
   ];
   return (
@@ -157,12 +159,12 @@ export default function Home() {
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="1.5"
+              strokeWidth="1.5"
               stroke="currentColor"
               className="h-6 w-6">
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 d="M15.75 19.5L8.25 12l7.5-7.5"
               />
             </svg>
@@ -181,12 +183,12 @@ export default function Home() {
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="1.5"
+              strokeWidth="1.5"
               stroke="currentColor"
               className="h-6 w-6">
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 d="M8.25 4.5l7.5 7.5-7.5 7.5"
               />
             </svg>
@@ -239,9 +241,11 @@ export default function Home() {
               <div className="bg-white rounded-lg py-[3rem]">
                 <p className="text-center text-lg">Book your tickets now</p>
                 <div className="flex justify-center my-5">
-                  <button className="bg-color3 hover:bg-color1 hover:text-color2 text-white p-2 rounded-md w-1/2">
+                  <Link
+                    href="/booking-page/1"
+                    className="bg-color3 hover:bg-color1 hover:text-color2 text-white p-2 rounded-md w-1/2">
                     Book Now
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

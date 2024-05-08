@@ -15,7 +15,7 @@ export default function Profile() {
         </h2>
         <div className="flex flex-col items-center">
           <img
-            src="/assets/profile-placeholder.png" // Replace with the path to your profile image
+            src="/assets/user.svg" // Replace with the path to your profile image
             alt="Profile"
             className="w-24 h-24 rounded-full border-2 border-gray-200 mb-4"
           />
