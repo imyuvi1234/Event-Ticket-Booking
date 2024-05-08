@@ -1,113 +1,259 @@
-import Image from "next/image";
+"use client";
+import React from "react";
+import { useEffect } from "react";
+import { Carousel, initTWE } from "tw-elements";
+
+const EventCardsHomaPage = ({
+  image,
+  enventLink,
+  eventName,
+  eventDescription,
+}) => {
+  return (
+    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 my-2">
+      <a href={enventLink}>
+        <img class="rounded-t-lg" src={image} alt="" />
+      </a>
+      <div class="p-5">
+        <a href={enventLink}>
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            {eventName}
+          </h5>
+        </a>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          {eventDescription}
+        </p>
+        <a
+          href={enventLink}
+          class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white hover:text-color2 bg-color3 rounded-lg hover:bg-color1 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+          Browse Event
+          <svg
+            class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 14 10">
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M1 5h12m0 0L9 1m4 4L9 9"
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+  );
+};
 
 export default function Home() {
+  useEffect(() => {
+    const init = async () => {
+      const { Carousel, initTWE } = await import("tw-elements");
+      initTWE({ Carousel });
+    };
+    init();
+  }, []);
+
+  const eventCardsHomaPageDetails = [
+    {
+      eventId: 1,
+      eventName: "Event 1",
+      eventDescription: "Some Description for Event 1",
+      image: "/assets/event1.jpg",
+      enventLink: "/event1",
+    },
+    {
+      eventId: 1,
+      eventName: "Event 2",
+      eventDescription: "Some Description for Event 2",
+      image: "/assets/event2.jpg",
+      enventLink: "/event2",
+    },
+    {
+      eventId: 1,
+      eventName: "Event 3",
+      eventDescription: "Some Description for Event 3",
+      image: "/assets/event3.jpg",
+      enventLink: "/event3",
+    },
+  ];
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+    <section className="container mx-auto p-5">
+      <div
+        id="carouselExampleCrossfade"
+        className="relative lg:w-10/12  mx-auto bg-gray-100 rounded-lg shadow-2xl"
+        data-twe-carousel-init
+        data-twe-ride="carousel">
+        <div
+          className="absolute inset-x-0 bottom-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
+          data-twe-carousel-indicators>
+          <button
+            type="button"
+            data-twe-target="#carouselExampleCrossfade"
+            data-twe-slide-to="0"
+            data-twe-carousel-active
+            className="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+            aria-current="true"
+            aria-label="Slide 1"></button>
+          <button
+            type="button"
+            data-twe-target="#carouselExampleCrossfade"
+            data-twe-slide-to="1"
+            className="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+            aria-label="Slide 2"></button>
+          <button
+            type="button"
+            data-twe-target="#carouselExampleCrossfade"
+            data-twe-slide-to="2"
+            className="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+            aria-label="Slide 3"></button>
+        </div>
+
+        <div className="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
+          <div
+            className="relative float-left -mr-[100%] w-full !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
+            data-twe-carousel-fade
+            data-twe-carousel-item
+            data-twe-carousel-active>
+            <img
+              src="/assets/event1.jpg"
+              className="block w-full h-full object-contain rounded-lg"
+              alt="Wild Landscape"
             />
-          </a>
+          </div>
+
+          <div
+            className="relative float-left -mr-[100%] hidden w-full !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
+            data-twe-carousel-fade
+            data-twe-carousel-item>
+            <img
+              src="/assets/event2.jpg"
+              className="block w-full h-full object-contain rounded-lg"
+              alt="Camera"
+            />
+          </div>
+
+          <div
+            className="relative float-left -mr-[100%] hidden w-full !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
+            data-twe-carousel-fade
+            data-twe-carousel-item>
+            <img
+              src="/assets/event3.jpg"
+              className="block w-full h-full object-contain rounded-lg"
+              alt="Exotic Fruits"
+            />
+          </div>
+        </div>
+
+        <button
+          className="absolute bottom-0 left-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+          type="button"
+          data-twe-target="#carouselExampleCrossfade"
+          data-twe-slide="prev">
+          <span className="inline-block h-8 w-8">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              className="h-6 w-6">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.75 19.5L8.25 12l7.5-7.5"
+              />
+            </svg>
+          </span>
+          <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+            Previous
+          </span>
+        </button>
+        <button
+          className="absolute bottom-0 right-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+          type="button"
+          data-twe-target="#carouselExampleCrossfade"
+          data-twe-slide="next">
+          <span className="inline-block h-8 w-8">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              className="h-6 w-6">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M8.25 4.5l7.5 7.5-7.5 7.5"
+              />
+            </svg>
+          </span>
+          <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+            Next
+          </span>
+        </button>
+      </div>
+      <div className="my-[5rem]">
+        <div className="bg-color4 lg:w-10/12 mx-auto rounded-md">
+          <p class="text-5xl text-center font-bold text-color1 py-5 pt-[4rem]">
+            {" "}
+            <span>Main </span>
+            <br className="sm:hidden h-5" />
+            <span>Event</span>
+          </p>
+          <p class="text-lg text-center text-color2 underline">14th May 2024</p>
+          <p class="text-sm text-center text-color1 underline">Mark the Date</p>
+          <p class="text-md p-5">
+            {" "}
+            lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur.
+          </p>
+          <div className="flex flex-wrap w-full">
+            <div className="w-full md:w-4/6 p-2">
+              <div className="bg-white rounded-lg py-5">
+                <p className="text-center text-lg font-bold">Key Events</p>
+                <div className="flex flex-wrap justify-around">
+                  <ul className="list-disc p-5">
+                    <li className="break-words">Event 1</li>
+                    <li>Event 2</li>
+                    <li>Event 3</li>
+                    <li>Event 4</li>
+                  </ul>
+                  <ul className="list-disc p-5">
+                    <li>Event 1</li>
+                    <li>Event 2</li>
+                    <li>Event 3</li>
+                    <li>Event 4</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div className="w-full md:w-2/6 p-2">
+              <div className="bg-white rounded-lg py-[3rem]">
+                <p className="text-center text-lg">Book your tickets now</p>
+                <div className="flex justify-center my-5">
+                  <button className="bg-color3 hover:bg-color1 hover:text-color2 text-white p-2 rounded-md w-1/2">
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className="flex flex-wrap justify-around">
+        {eventCardsHomaPageDetails.map((eventCard, index) => (
+          <EventCardsHomaPage key={index} {...eventCard} />
+        ))}
       </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </section>
   );
 }
