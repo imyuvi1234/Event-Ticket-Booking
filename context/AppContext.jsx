@@ -4,15 +4,19 @@ export const AppContext = createContext();
 
 export const AppContextProvider = ({ children }) => {
 
-    const [state, setState] = useState("asd")
-    const [isLogin, setIsLogin] = useState(true)
-    const [loginState, setLoginState] = useState(true)
-   
+
+  const [isLogin, setIsLogin] = useState(() => {
+    if (typeof window !== "undefined") {
+      const isUserLoggedIn = window.localStorage.getItem("isUserLoggedIn");
+      return isUserLoggedIn === "true";
+    }
+    return false;
+  });
+  const [loginState, setLoginState] = useState(true);
+
   return (
     <AppContext.Provider
       value={{
-        state,
-        setState,
         isLogin,
         setIsLogin,
         loginState,

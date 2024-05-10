@@ -1,23 +1,55 @@
 "use client";
 import { AppContext } from "@/context/AppContext";
 import React, { useContext, useState } from "react";
+import { useToast } from "@chakra-ui/react";
 
 const SignUp = () => {
   const { setLoginState } = useContext(AppContext);
+  const [signUpFormDetail, setSignUpFormDetail] = useState({});
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [reEnterPassword, setReEnterPassword] = useState("");
-
+  const toast = useToast();
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("First Name:", firstName);
-    console.log("Last Name:", lastName);
-    console.log("Email:", email);
-    console.log("Password:", password);
-    console.log("Re-enter Password:", reEnterPassword);
+
+    signUpFormDetail["username"] =
+      signUpFormDetail.firstname + signUpFormDetail.email;
+
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify(signUpFormDetail);
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    fetch("http://localhost:8000/signup", requestOptions)
+      .then((response) => response.text())
+      .then((result) => {
+        var ResultObj = JSON.parse(result);
+        if (ResultObj.message === "Signup successful!") {
+          setLoginState((prev) => !prev);
+          toast({
+            title: "Account created.",
+            description: "We've created your account for you.",
+            status: "success",
+            duration: 9000,
+            isClosable: true,
+          });
+        } else {
+          toast({
+            title: "Account created.",
+            description: "We've created your account for you.",
+            status: "success",
+            duration: 9000,
+            isClosable: true,
+          });
+        }
+      })
+      .catch((error) => console.error(error));
   };
 
   return (
@@ -36,52 +68,64 @@ const SignUp = () => {
         <div className="">
           <div className="flex space-x-4">
             <div className="w-1/2 border-b-2 border-black">
-              <label htmlFor="first-name" className="sr-only">
+              <label htmlFor="firstname" className="sr-only">
                 First Name
               </label>
               <input
-                id="first-name"
-                name="first-name"
+                id="firstname"
+                name="firstname"
                 type="text"
-                autoComplete="given-name"
+                autoComplete="firstname"
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="First Name"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
+                onChange={(e) => {
+                  setSignUpFormDetail({
+                    ...signUpFormDetail,
+                    [e.target.name]: e.target.value,
+                  });
+                }}
               />
             </div>
             <div className="w-1/2 border-b-2 border-black">
-              <label htmlFor="last-name" className="sr-only">
+              <label htmlFor="lastname" className="sr-only">
                 Last Name
               </label>
               <input
-                id="last-name"
-                name="last-name"
+                id="lastname"
+                name="lastname"
                 type="text"
-                autoComplete="family-name"
+                autoComplete="lastname"
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Last Name"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
+                onChange={(e) => {
+                  setSignUpFormDetail({
+                    ...signUpFormDetail,
+                    [e.target.name]: e.target.value,
+                  });
+                }}
               />
             </div>
           </div>
           <div className="border-b-2 border-black my-2">
-            <label htmlFor="email-address" className="sr-only">
+            <label htmlFor="email" className="sr-only">
               Email address
             </label>
             <input
-              id="email-address"
+              id="email"
               name="email"
               type="email"
               autoComplete="email"
               required
               className="appearance-none rounded-none relative block w-full px-3 py-2 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:z-10 sm:text-sm"
               placeholder="Email address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setSignUpFormDetail({
+                  ...signUpFormDetail,
+                  [e.target.name]: e.target.value,
+                });
+              }}
             />
           </div>
           <div className="border-b-2 border-black my-2">
@@ -92,15 +136,19 @@ const SignUp = () => {
               id="password"
               name="password"
               type="password"
-              autoComplete="new-password"
+              autoComplete="password"
               required
               className="appearance-none rounded-none relative block w-full px-3 py-2 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:z-10 sm:text-sm"
               placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => {
+                setSignUpFormDetail({
+                  ...signUpFormDetail,
+                  [e.target.name]: e.target.value,
+                });
+              }}
             />
           </div>
-          <div className="border-b-2 border-black my-2">
+          {/* <div className="border-b-2 border-black my-2">
             <label htmlFor="re-enter-password" className="sr-only">
               Re-enter Password
             </label>
@@ -113,9 +161,14 @@ const SignUp = () => {
               className="appearance-none rounded-none relative block w-full px-3 py-2 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:z-10 sm:text-sm"
               placeholder="Re-enter Password"
               value={reEnterPassword}
-              onChange={(e) => setReEnterPassword(e.target.value)}
+              onChange={(e) => {
+                setSignUpFormDetail({
+                  ...signUpFormDetail,
+                  [e.target.name]: e.target.value,
+                });
+              }}
             />
-          </div>
+          </div> */}
         </div>
 
         <div className="flex items-center justify-between">

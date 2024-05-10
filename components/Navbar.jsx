@@ -9,6 +9,14 @@ export default function Navbar() {
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const { isLogin } = useContext(AppContext);
 
+  const handleLogout = () => {
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem("isUserLoggedIn", "false");
+      window.location.href = "/";
+    }
+    setProfileDropdownOpen(!profileDropdownOpen);
+  }
+
 
   return (
     <nav className="bg-[#Ecf0f4] p-4 z-40">
@@ -58,9 +66,8 @@ export default function Navbar() {
                       </li>
                       <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
                         <Link
-                          onClick={() =>
-                            setProfileDropdownOpen(!profileDropdownOpen)
-                          }
+                          onClick={handleLogout}
+                            
                           href="/">
                           Logout
                         </Link>

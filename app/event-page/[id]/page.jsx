@@ -1,7 +1,27 @@
-import React from "react";
+"use client";
+
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
 
 const page = ({ params }) => {
   const { id } = params;
+  const [eventPageDetails, setEventPageDetails] = useState(false);
+
+  useEffect(() => {
+      const raw = "";
+
+      const requestOptions = {
+        method: "GET",
+        redirect: "follow",
+      };
+
+      fetch(`http://localhost:8000/eventdetails/${id}`, requestOptions)
+        .then((response) => response.text())
+        .then((result) => {
+          setEventPageDetails(JSON.parse(result));
+        })
+        .catch((error) => console.error(error));
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -16,9 +36,11 @@ const page = ({ params }) => {
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
             <h1 className="text-3xl font-bold text-white sm:text-4xl md:text-5xl lg:text-6xl">
-              Event Title
+              {eventPageDetails.event_title}
             </h1>
-            <p className="mt-4 text-lg text-gray-300">Event Date</p>
+            <p className="mt-4 text-lg text-gray-300">
+              {eventPageDetails.event_date}
+            </p>
           </div>
         </div>
       </div>
@@ -30,27 +52,33 @@ const page = ({ params }) => {
             Event Description
           </h2>
           <p className="mt-4 text-lg text-gray-700">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-            varius sagittis est, eu posuere tortor elementum vel.
+            {eventPageDetails.event_description}
           </p>
         </div>
 
-        <div className="mt-8">
-          <h2 className="text-2xl font-semibold text-gray-900">Key Events</h2>
-          <ul className="mt-4 list-disc list-inside">
-            <li className="mb-2">Key Event 1</li>
-            <li className="mb-2">Key Event 2</li>
-            <li className="mb-2">Key Event 3</li>
-            <li className="mb-2">Key Event 4</li>
-            <li className="mb-2">Key Event 5</li>
-          </ul>
-        </div>
+        {eventPageDetails.event_key_items &&
+          eventPageDetails.event_key_items.length !== 0 && (
+            <div className="mt-8">
+              <h2 className="text-2xl font-semibold text-gray-900">
+                Key Events
+              </h2>
+              <ul className="mt-4 list-disc list-inside">
+                {eventPageDetails.event_key_items.map((event, index) => (
+                  <li key={index} className="text-lg text-gray-700">
+                    {event}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
         {/* Book Now Button */}
         <div className="mt-8 flex justify-center">
-          <button className="px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+          <Link
+            href={`/booking-page/${id}`}
+            className="w-2/6 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-color3 hover:bg-color1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
             Book Now
-          </button>
+          </Link>
         </div>
       </div>
     </div>

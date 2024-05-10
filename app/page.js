@@ -2,7 +2,6 @@
 import Link from "next/link";
 import React from "react";
 import { useEffect } from "react";
-import { Carousel, initTWE } from "tw-elements";
 
 const EventCardsHomaPage = ({
   eventId,
@@ -67,14 +66,14 @@ export default function Home() {
       eventLink: "/event-page",
     },
     {
-      eventId: 1,
+      eventId: 2,
       eventName: "Event 2",
       eventDescription: "Some Description for Event 2",
       image: "/assets/event2.jpg",
       eventLink: "/event-page",
     },
     {
-      eventId: 1,
+      eventId: 3,
       eventName: "Event 3",
       eventDescription: "Some Description for Event 3",
       image: "/assets/event3.jpg",
@@ -243,7 +242,7 @@ export default function Home() {
                 <div className="flex justify-center my-5">
                   <Link
                     href="/booking-page/1"
-                    className="bg-color3 hover:bg-color1 hover:text-color2 text-white p-2 rounded-md w-1/2">
+                    className=" text-center bg-color3 hover:bg-color1 hover:text-color2 text-white p-2 rounded-md w-1/2">
                     Book Now
                   </Link>
                 </div>

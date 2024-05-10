@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { AppContextProvider } from "@/context/AppContext";
+import { ChakraProvider } from "@chakra-ui/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,12 +15,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AppContextProvider>
-          <section>
-            <Navbar />
-          </section>
-          <section>{children}</section>
-        </AppContextProvider>
+        <ChakraProvider>
+          <AppContextProvider>
+            <section>
+              <Navbar />
+            </section>
+            <section>{children}</section>
+          </AppContextProvider>
+        </ChakraProvider>
       </body>
     </html>
   );

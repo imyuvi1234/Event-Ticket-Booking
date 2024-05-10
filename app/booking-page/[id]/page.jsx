@@ -1,28 +1,57 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Page = ({ params }) => {
   const { id } = params;
-  const [formData, setFormData] = useState({
-    numOfTickets: 1,
-    email: "",
-    dob: "",
-    firstName: "",
-    lastName: "",
-  });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
+  const [bookingDetailsInfo, setBookingDetailsInfo] = useState({});
+  const [bookingPageDetails, setBookingPageDetails] = useState(false);
+
+  useEffect(() => {
+    const raw = "";
+
+    const requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
+
+    fetch(`http://localhost:8000/eventdetails/${id}`, requestOptions)
+      .then((response) => response.text())
+      .then((result) => {
+        setBookingPageDetails(JSON.parse(result));
+      })
+      .catch((error) => console.error(error));
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log(formData);
+
+    bookingDetailsInfo["event_id"] = parseInt(id);
+    bookingDetailsInfo["user_id"] = 8;
+
+    console.log(bookingDetailsInfo);
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify({
+      event_id: 5,
+      user_id: 8,
+      ticket_number: 2,
+    });
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    fetch("http://localhost:8000/booking", requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.error(error));
+
+    console.log(bookingDetailsInfo);
   };
 
   return (
@@ -35,8 +64,18 @@ const Page = ({ params }) => {
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="my-3 text-xl text-center">
+            <h2 className="my-2">
+              <span className="font-bold">Event Name: </span>
+              <span>{bookingPageDetails.event_title}</span>
+            </h2>
+            <h2 className="my-2">
+              <span className="font-bold">Event Date: </span>
+              <span>{bookingPageDetails.event_date}</span>
+            </h2>
+          </div>
 
+          <form onSubmit={handleSubmit} className="space-y-6 my-5">
             <div>
               <label
                 htmlFor="numOfTickets"
@@ -48,11 +87,18 @@ const Page = ({ params }) => {
                   id="numOfTickets"
                   name="numOfTickets"
                   type="number"
-                  min="1"
-                  value={formData.numOfTickets}
-                  onChange={handleChange}
+                  min={1}
+                  max={2}
+                  onChange={(e) => {setBookingDetailsInfo({ ...bookingDetailsInfo, ticket_number: parseInt(e.target.value) })}}
+                  onInvalid={(e) => {
+                    e.target.setCustomValidity(
+                      "You can only book a maximum of 2 tickets"
+                    );
+                  }}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  required
                 />
+                <sub className="text-center">Maximum number of is 2</sub>
               </div>
             </div>
 

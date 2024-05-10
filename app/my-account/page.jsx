@@ -1,11 +1,36 @@
 // pages/profile.js
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
 export default function Profile() {
-  const [name, setName] = useState("John Doe");
-  const [email, setEmail] = useState("john.doe@example.com");
+
+  let changePasswordLink = "/change-password/";
+  if (typeof window !== "undefined") {
+    const username = window.localStorage.getItem("username");
+    changePasswordLink += username;
+  }
+
+  useEffect(() => {
+    const requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
+
+    fetch(
+      `http://localhost:8000/userdetails?username=${localStorage.getItem(
+        "username"
+      )}`,
+      requestOptions
+    )
+      .then((response) => response.text())
+      .then((result) => {
+        const user = JSON.parse(result);
+        document.getElementById("name").value = user.firstname + user.lastname;
+        document.getElementById("email").value = user.email;
+      })
+      .catch((error) => console.error(error));
+  }, []);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
@@ -31,8 +56,6 @@ export default function Profile() {
               id="name"
               name="name"
               type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
               className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               required
               disabled
@@ -48,20 +71,21 @@ export default function Profile() {
               id="email"
               name="email"
               type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
               className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               required
               disabled
             />
           </div>
-          <Link href="/change-password">
-            <button
-              type="button"
-              className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mt-4">
-              Change Password
-            </button>
-          </Link>
+
+          
+            <div className="w-full flex justify-around">
+              <Link
+                href={changePasswordLink}
+                className=" bg-color3 text-white py-2 px-4 rounded-md hover:bg-color1 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                Change Password
+              </Link>
+            </div>
+          
         </form>
       </div>
     </div>
