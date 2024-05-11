@@ -34,6 +34,8 @@ const Login = () => {
         if (ResultObj.email === loginFormDetail.email) {
           window.localStorage.setItem("isUserLoggedIn", true);
           window.localStorage.setItem("username", ResultObj.username);
+          window.localStorage.setItem("userid", ResultObj.userid);
+          window.localStorage.setItem("email", ResultObj.email);
           setIsLogin(true);
           router.push("/");
         }

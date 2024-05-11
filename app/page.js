@@ -57,6 +57,10 @@ export default function Home() {
     init();
   }, []);
 
+  const handleBooknow = () => {
+    if (window.localStorage.getItem("isUserLoggedIn") === "true"){ window.location.href = "/booking-page/1"; }
+    else{ window.location.href = "/signIn";} }
+
   const eventCardsHomaPageDetails = [
     {
       eventId: 1,
@@ -240,11 +244,11 @@ export default function Home() {
               <div className="bg-white rounded-lg py-[3rem]">
                 <p className="text-center text-lg">Book your tickets now</p>
                 <div className="flex justify-center my-5">
-                  <Link
-                    href="/booking-page/1"
+                  <button
+                    onClick={handleBooknow}
                     className=" text-center bg-color3 hover:bg-color1 hover:text-color2 text-white p-2 rounded-md w-1/2">
                     Book Now
-                  </Link>
+                  </button>
                 </div>
               </div>
             </div>

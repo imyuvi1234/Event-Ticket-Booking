@@ -5,9 +5,10 @@ const Page = ({ params }) => {
   const { user } = params;
 
   const [formData, setFormData] = useState({
-    email: "",
-    oldPassword: "",
-    newPassword: "",
+    email:
+      typeof window !== "undefined"
+        ? window.localStorage.getItem("email")
+        : null,
   });
 
   const handleChange = (e) => {
@@ -20,8 +21,25 @@ const Page = ({ params }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log(formData);
+
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify(formData);
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    fetch("http://localhost:8000/changepassword", requestOptions)
+      .then((response) => response.text())
+      .then((result) => {
+        window.location.href = "/my-account";
+      })
+      .catch((error) => console.error(error));
   };
 
   return (
@@ -51,27 +69,27 @@ const Page = ({ params }) => {
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                   placeholder="Email address"
                   value={formData.email}
-                  onChange={handleChange}
+                  disabled
                 />
               </div>
             </div>
 
             <div>
               <label
-                htmlFor="oldPassword"
+                htmlFor="old_password"
                 className="block text-sm font-medium text-gray-700">
                 Old Password
               </label>
               <div className="mt-1">
                 <input
-                  id="oldPassword"
-                  name="oldPassword"
+                  id="old_password"
+                  name="old_password"
                   type="password"
                   autoComplete="current-password"
                   required
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                   placeholder="Old Password"
-                  value={formData.oldPassword}
+                  value={formData.old_password}
                   onChange={handleChange}
                 />
               </div>
@@ -79,20 +97,20 @@ const Page = ({ params }) => {
 
             <div>
               <label
-                htmlFor="newPassword"
+                htmlFor="new_password"
                 className="block text-sm font-medium text-gray-700">
                 New Password
               </label>
               <div className="mt-1">
                 <input
-                  id="newPassword"
-                  name="newPassword"
+                  id="new_password"
+                  name="new_password"
                   type="password"
                   autoComplete="new-password"
                   required
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                   placeholder="New Password"
-                  value={formData.newPassword}
+                  value={formData.new_password}
                   onChange={handleChange}
                 />
               </div>

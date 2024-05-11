@@ -11,18 +11,21 @@ export default function Navbar() {
 
   const handleLogout = () => {
     if (typeof window !== "undefined") {
-      window.localStorage.setItem("isUserLoggedIn", "false");
+      window.localStorage.removeItem("isUserLoggedIn");
+      window.localStorage.removeItem("username");
+      window.localStorage.removeItem("userid");
       window.location.href = "/";
     }
     setProfileDropdownOpen(!profileDropdownOpen);
-  }
-
+  };
 
   return (
     <nav className="bg-[#Ecf0f4] p-4 z-40">
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-gray-950 text-xl font-bold">
-          <Link href="/">MyLogo</Link>
+          <Link href="/">
+            <img src="/assets/logo-color.png" alt="logo" height={250} width={250} className="rounded-md"/>
+          </Link>
         </div>
         <div className="flex items-center space-x-4">
           <div className="hidden md:flex space-x-8">
@@ -65,25 +68,22 @@ export default function Navbar() {
                         </Link>
                       </li>
                       <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                        <Link
-                          onClick={handleLogout}
-                            
-                          href="/">
+                        <Link onClick={handleLogout} href="/">
                           Logout
                         </Link>
                       </li>
                     </>
                   )}
                   {!isLogin && (
-                      <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                        <Link
-                          onClick={() =>
-                            setProfileDropdownOpen(!profileDropdownOpen)
-                          }
-                          href="/signIn">
-                          Sign In
-                        </Link>
-                      </li>
+                    <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                      <Link
+                        onClick={() =>
+                          setProfileDropdownOpen(!profileDropdownOpen)
+                        }
+                        href="/signIn">
+                        Sign In
+                      </Link>
+                    </li>
                   )}
                 </ul>
               </div>

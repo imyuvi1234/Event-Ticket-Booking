@@ -8,7 +8,6 @@ const Page = ({ params }) => {
   const [bookingPageDetails, setBookingPageDetails] = useState(false);
 
   useEffect(() => {
-    const raw = "";
 
     const requestOptions = {
       method: "GET",
@@ -27,17 +26,12 @@ const Page = ({ params }) => {
     e.preventDefault();
 
     bookingDetailsInfo["event_id"] = parseInt(id);
-    bookingDetailsInfo["user_id"] = 8;
+    bookingDetailsInfo["user_id"] = parseInt(window.localStorage.getItem("userid"));
 
-    console.log(bookingDetailsInfo);
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
-    const raw = JSON.stringify({
-      event_id: 5,
-      user_id: 8,
-      ticket_number: 2,
-    });
+    const raw = JSON.stringify(bookingDetailsInfo);
 
     const requestOptions = {
       method: "POST",
@@ -84,17 +78,18 @@ const Page = ({ params }) => {
               </label>
               <div className="mt-1">
                 <input
-                  id="numOfTickets"
-                  name="numOfTickets"
+                  id="ticket_number"
+                  name="ticket_number"
                   type="number"
                   min={1}
                   max={2}
-                  onChange={(e) => {setBookingDetailsInfo({ ...bookingDetailsInfo, ticket_number: parseInt(e.target.value) })}}
-                  onInvalid={(e) => {
-                    e.target.setCustomValidity(
-                      "You can only book a maximum of 2 tickets"
-                    );
+                  onChange={(e) => {
+                    setBookingDetailsInfo({
+                      ...bookingDetailsInfo,
+                      ticket_number: parseInt(e.target.value),
+                    });
                   }}
+                  
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                   required
                 />

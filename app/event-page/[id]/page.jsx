@@ -8,19 +8,19 @@ const page = ({ params }) => {
   const [eventPageDetails, setEventPageDetails] = useState(false);
 
   useEffect(() => {
-      const raw = "";
+    const raw = "";
 
-      const requestOptions = {
-        method: "GET",
-        redirect: "follow",
-      };
+    const requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
 
-      fetch(`http://localhost:8000/eventdetails/${id}`, requestOptions)
-        .then((response) => response.text())
-        .then((result) => {
-          setEventPageDetails(JSON.parse(result));
-        })
-        .catch((error) => console.error(error));
+    fetch(`http://localhost:8000/eventdetails/${id}`, requestOptions)
+      .then((response) => response.text())
+      .then((result) => {
+        setEventPageDetails(JSON.parse(result));
+      })
+      .catch((error) => console.error(error));
   }, []);
 
   return (
