@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { useEffect } from "react";
@@ -13,7 +14,13 @@ const EventCardsHomaPage = ({
   return (
     <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 my-2">
       <a href={eventLink}>
-        <img class="rounded-t-lg" src={image} alt="" />
+        <Image
+          class="rounded-t-lg"
+          src={image}
+          alt={image}
+          width={640}
+          height={480}
+        />
       </a>
       <div class="p-5">
         <a href={eventLink}>
@@ -58,8 +65,12 @@ export default function Home() {
   }, []);
 
   const handleBooknow = () => {
-    if (window.localStorage.getItem("isUserLoggedIn") === "true"){ window.location.href = "/booking-page/1"; }
-    else{ window.location.href = "/signIn";} }
+    if (window.localStorage.getItem("isUserLoggedIn") === "true") {
+      window.location.href = "/booking-page/1";
+    } else {
+      window.location.href = "/signIn";
+    }
+  };
 
   const eventCardsHomaPageDetails = [
     {
@@ -122,10 +133,12 @@ export default function Home() {
             data-twe-carousel-fade
             data-twe-carousel-item
             data-twe-carousel-active>
-            <img
+            <Image
               src="/assets/event1.jpg"
               className="block w-full h-full object-contain rounded-lg"
               alt="Wild Landscape"
+              width={1080}
+              height={640}
             />
           </div>
 
@@ -133,10 +146,12 @@ export default function Home() {
             className="relative float-left -mr-[100%] hidden w-full !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
             data-twe-carousel-fade
             data-twe-carousel-item>
-            <img
+            <Image
               src="/assets/event2.jpg"
               className="block w-full h-full object-contain rounded-lg"
               alt="Camera"
+              width={1080}
+              height={640}
             />
           </div>
 
@@ -144,10 +159,12 @@ export default function Home() {
             className="relative float-left -mr-[100%] hidden w-full !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
             data-twe-carousel-fade
             data-twe-carousel-item>
-            <img
+            <Image
               src="/assets/event3.jpg"
               className="block w-full h-full object-contain rounded-lg"
               alt="Exotic Fruits"
+              width={1080}
+              height={640}
             />
           </div>
         </div>

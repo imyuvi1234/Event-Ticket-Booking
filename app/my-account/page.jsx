@@ -2,6 +2,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Profile() {
   let changePasswordLink = "/change-password/";
@@ -38,11 +39,14 @@ export default function Profile() {
           Your Profile
         </h2>
         <div className="flex flex-col items-center">
-          <img
+          <Image
             src="/assets/user.svg" // Replace with the path to your profile image
             alt="Profile"
             className="w-24 h-24 rounded-full border-2 border-gray-200 mb-4"
+            width={24}
+            height={24} 
           />
+          
         </div>
         <form className="space-y-4">
           <div>

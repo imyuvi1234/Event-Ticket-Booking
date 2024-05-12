@@ -3,6 +3,7 @@
 import { useContext, useState } from "react";
 import Link from "next/link";
 import { AppContext } from "@/context/AppContext";
+import Image from "next/image";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +25,13 @@ export default function Navbar() {
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-gray-950 text-xl font-bold">
           <Link href="/">
-            <img src="/assets/logo-color.png" alt="logo" height={250} width={250} className="rounded-md"/>
+            <Image
+              src="/assets/logo-color.png"
+              alt="logo"
+              height={250}
+              width={250}
+              className="rounded-md"
+            />
           </Link>
         </div>
         <div className="flex items-center space-x-4">
@@ -37,11 +44,13 @@ export default function Navbar() {
             <button
               onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
               className="focus:outline-none">
-              <img
-                src="/assets/user.svg"
-                alt="Profile Icon"
-                className="w-8 h-8 rounded-lg p-1 border border-gray-950"
-              />
+                <Image 
+                  src="/assets/user.svg"
+                  alt="Profile Icon"
+                  className="w-8 h-8 rounded-lg p-1 border border-gray-950"
+                  width={8}
+                  height={8}
+                />
             </button>
             {/* Profile Dropdown Menu */}
             {profileDropdownOpen && (

@@ -1,39 +1,8 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-// const MyTasksPageCard = ({
-//   eventID,
-//   eventLink,
-//   eventImageURL,
-//   eventTitle,
-//   eventDescription,
-// }) => {
-//   return (
-//     <div className="w-10/12 mx-auto bg-white border border-color4 rounded-xl shadow-md overflow-hidden m-3">
-//       <div className="md:flex">
-//         <div className="md:flex-shrink-0">
-//           <img
-//             className="h-64 w-full object-cover md:w-64"
-//             src={eventImageURL}
-//             alt={eventTitle}
-//           />
-//         </div>
-//         <div className="p-8 grid content-around">
-//           <div className="uppercase tracking-wide text-2xl text-color1 font-semibold">
-//             {eventTitle}
-//           </div>
-//           <p className="mt-2 text-color1">{eventDescription}</p>
-//           <Link
-//             href={`${eventLink}/${eventID}`}
-//             className="bg-color3 hover:bg-color1 hover:text-color2 text-white text-center p-1 rounded-md w-40 mt-3">
-//             Browse Event
-//           </Link>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
 
 const MyTasksPageCard = ({
   event_id,
@@ -46,10 +15,12 @@ const MyTasksPageCard = ({
     <div className="w-10/12 mx-auto bg-white border border-color4 rounded-xl shadow-md overflow-hidden m-3">
       <div className="md:flex">
         <div className="md:flex-shrink-0 p-8">
-          <img
+          <Image
             className="h-64 w-full object-cover md:w-64 rounded-lg"
             src="/assets/event1.jpg"
             alt={event_title}
+            height={64}
+            width={960}
           />
         </div>
         <div className="p-8 grid content-around">

@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
@@ -13,10 +14,12 @@ const AllTasksPageCard = ({
     <div className="w-10/12 mx-auto bg-white border border-color4 rounded-xl shadow-md overflow-hidden m-3">
       <div className="md:flex">
         <div className="md:flex-shrink-0 p-8">
-          <img
+          <Image
             className="h-64 w-full object-cover md:w-64 rounded-lg"
-            src="/assets/event1.jpg"
+            src={`/assets/event${event_id}.jpg`}
             alt={event_title}
+            width={960}
+            height={64}
           />
         </div>
         <div className="p-8 grid content-around">
