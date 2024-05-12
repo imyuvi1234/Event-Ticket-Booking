@@ -136,8 +136,8 @@ const Login = () => {
           </button>
         </div>
       </form>
-      <div className="mt-4 ">
-        <span>Don't have an account? </span>
+      <div className="mt-4">
+        <span>Don&apos;t have an account? </span>
         <span>
           <button
             className="underline"

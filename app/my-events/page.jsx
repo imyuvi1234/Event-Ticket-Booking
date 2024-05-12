@@ -48,7 +48,7 @@ const MyTasksPageCard = ({
         <div className="md:flex-shrink-0 p-8">
           <img
             className="h-64 w-full object-cover md:w-64 rounded-lg"
-            src="https://source.unsplash.com/random"
+            src="/assets/event1.jpg"
             alt={event_title}
           />
         </div>
@@ -69,7 +69,7 @@ const MyTasksPageCard = ({
   );
 };
 
-const page = () => {
+const Page = () => {
   const [loading, setLoading] = useState(false);
 
   const userIDDetails =
@@ -124,4 +124,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

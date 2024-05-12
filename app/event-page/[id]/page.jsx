@@ -1,9 +1,9 @@
 "use client";
-
+import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-const page = ({ params }) => {
+const Page = ({ params }) => {
   const { id } = params;
   const [eventPageDetails, setEventPageDetails] = useState(false);
 
@@ -30,9 +30,11 @@ const page = ({ params }) => {
     <div className="min-h-screen bg-gray-100">
       {/* Hero Section */}
       <div className="relative bg-gray-900">
-        <img
+        <Image
           className="w-full h-64 object-cover md:h-96 lg:h-screen"
-          src="https://source.unsplash.com/random"
+          width={960}
+          height={64}
+          src="/assets/event1.jpg"
           alt="Event Banner"
         />
         <div className="absolute inset-0 bg-gray-900 opacity-75"></div>
@@ -88,4 +90,4 @@ const page = ({ params }) => {
   );
 };
 
-export default page;
+export default Page;

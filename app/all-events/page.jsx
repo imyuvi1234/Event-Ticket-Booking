@@ -15,7 +15,7 @@ const AllTasksPageCard = ({
         <div className="md:flex-shrink-0 p-8">
           <img
             className="h-64 w-full object-cover md:w-64 rounded-lg"
-            src="https://source.unsplash.com/random"
+            src="/assets/event1.jpg"
             alt={event_title}
           />
         </div>
