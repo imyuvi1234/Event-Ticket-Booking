@@ -1,43 +1,7 @@
 "use client";
-import Image from "next/image";
-import Link from "next/link";
+import EventDisplayCard from "@/components/eventDisplayCard";
 import React, { useEffect, useState } from "react";
 
-const AllTasksPageCard = ({
-  event_id,
-  event_date,
-  eventImageURL,
-  event_title,
-  event_description,
-}) => {
-  return (
-    <div className="w-10/12 mx-auto bg-white border border-color4 rounded-xl shadow-md overflow-hidden m-3">
-      <div className="md:flex">
-        <div className="md:flex-shrink-0 p-8">
-          <Image
-            className="h-64 w-full object-cover md:w-64 rounded-lg"
-            src={`/assets/event${event_id}.jpg`}
-            alt={event_title}
-            width={960}
-            height={64}
-          />
-        </div>
-        <div className="p-8 grid content-around">
-          <div className="uppercase tracking-wide text-2xl text-color1 font-semibold">
-            {event_title}
-          </div>
-          <p className="text-color2">{event_date}</p>
-          <p className="mt-2 text-color1">{event_description}</p>
-          <Link
-            href={`/event-page/${event_id}`}
-            className="bg-color3 hover:bg-color1 hover:text-color2 text-white text-center p-1 rounded-md w-40 mt-3">
-            Browse Event
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 const Page = () => {
   const [loading, setLoading] = useState(false);
@@ -59,8 +23,9 @@ const Page = () => {
     )
       .then((response) => response.text())
       .then((result) => {
-        setAllTasksPageCardDetails(JSON.parse(result));
-        console.log(allTasksPageCardDetails);
+        const ResultObj = JSON.parse(result);
+        setAllTasksPageCardDetails(ResultObj);
+        console.log(ResultObj);
       })
       .catch((error) => console.error(error));
   }, []);
@@ -74,13 +39,13 @@ const Page = () => {
           <div className="loader"></div>
         </div>
       ) : (
-        <div>
-          <h1 className="text-3xl font-bold mb-4 text-color1 text-center my-[3rem] underline">
+        <div className="bg-color3">
+          <h1 className="text-3xl font-bold pb-4 text-color2 text-center py-[3rem] underline">
             All Events
           </h1>
-          <div className="flex flex-col w-full">
+          <div className="flex flex-col w-full p-4">
             {allTasksPageCardDetails.map((event, index) => (
-              <AllTasksPageCard key={index} {...event} />
+              <EventDisplayCard key={index} {...event} />
             ))}
           </div>
         </div>

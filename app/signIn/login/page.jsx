@@ -2,12 +2,14 @@
 import { AppContext } from "@/context/AppContext";
 import React, { useContext, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useToast } from "@chakra-ui/react";
 
 const Login = () => {
   const { setIsLogin, setLoginState } = useContext(AppContext);
   const [loginFormDetail, setLoginFormDetail] = useState({});
 
   const router = useRouter();
+  const toast = useToast();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,11 +35,28 @@ const Login = () => {
           window.localStorage.setItem("username", ResultObj.username);
           window.localStorage.setItem("userid", ResultObj.userid);
           window.localStorage.setItem("email", ResultObj.email);
+
           setIsLogin(true);
           router.push("/");
+        }else{
+          toast({
+            title: "Error!",
+            description: "Invalid Email or Password",
+            status: "error",
+            duration: 9000,
+            isClosable: true,
+          });
         }
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        toast({
+          title: "Error!",
+          description: { error },
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+        });
+      });
   };
 
   return (

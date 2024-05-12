@@ -21,7 +21,7 @@ export default function Navbar() {
 
   return (
     <nav className="bg-[#Ecf0f4] p-4 z-40">
-      <div className="container mx-auto flex justify-between items-center">
+      <div className="container mx-auto flex justify-between items-center xl:space-x-12">
         <div className="text-gray-950 text-xl font-bold">
           <Link href="/">
             <Image
@@ -33,8 +33,8 @@ export default function Navbar() {
             />
           </Link>
         </div>
-        <div className="flex items-center space-x-4">
-          <div className="hidden md:flex space-x-8">
+        <div className="flex items-center justify-between space-x-4 xl:space-x-12">
+          <div className="hidden md:flex space-x-8 xl:space-x-12">
             <Link href="/all-events" className="text-gray-950 hover:underline">
               All Events
             </Link>
@@ -43,13 +43,13 @@ export default function Navbar() {
             <button
               onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
               className="focus:outline-none">
-                <Image 
-                  src="/assets/user.svg"
-                  alt="Profile Icon"
-                  className="w-8 h-8 rounded-lg p-1 border border-gray-950"
-                  width={8}
-                  height={8}
-                />
+              <Image
+                src="/assets/user.svg"
+                alt="Profile Icon"
+                className="w-8 h-8 rounded-lg p-1 border border-gray-950"
+                width={8}
+                height={8}
+              />
             </button>
             {/* Profile Dropdown Menu */}
             {profileDropdownOpen && (

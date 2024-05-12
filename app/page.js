@@ -1,283 +1,144 @@
 "use client";
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
-import { useEffect } from "react";
+import Image from "next/image";
+import TestimonialCarousel from "@/components/testimonial";
+import Featuredevents from "@/components/featuredevents";
 
-const EventCardsHomaPage = ({
-  eventId,
-  image,
-  eventLink,
-  eventName,
-  eventDescription,
-}) => {
-  return (
-    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 my-2">
-      <a href={eventLink}>
-        <Image
-          class="rounded-t-lg"
-          src={image}
-          alt={image}
-          width={640}
-          height={480}
-        />
-      </a>
-      <div class="p-5">
-        <a href={eventLink}>
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            {eventName}
-          </h5>
-        </a>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          {eventDescription}
-        </p>
-        <Link
-          href={`${eventLink}/${eventId}`}
-          class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white hover:text-color2 bg-color3 rounded-lg hover:bg-color1 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-          Browse Event
-          <svg
-            class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 14 10">
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M1 5h12m0 0L9 1m4 4L9 9"
-            />
-          </svg>
-        </Link>
-      </div>
-    </div>
-  );
-};
+const HomePage = () => {
 
-export default function Home() {
-  useEffect(() => {
-    const init = async () => {
-      const { Carousel, initTWE } = await import("tw-elements");
-      initTWE({ Carousel });
-    };
-    init();
-  }, []);
-
-  const handleBooknow = () => {
-    if (window.localStorage.getItem("isUserLoggedIn") === "true") {
-      window.location.href = "/booking-page/1";
-    } else {
-      window.location.href = "/signIn";
-    }
-  };
+   const handleBooknow = () => {
+     if (window.localStorage.getItem("isUserLoggedIn") === "true") {
+       window.location.href = "/booking-page/1";
+     } else {
+       window.location.href = "/signIn";
+     }
+   };
 
   const eventCardsHomaPageDetails = [
     {
-      eventId: 1,
-      eventName: "Event 1",
-      eventDescription: "Some Description for Event 1",
-      image: "/assets/event1.jpg",
-      eventLink: "/event-page",
-    },
-    {
-      eventId: 2,
-      eventName: "Event 2",
-      eventDescription: "Some Description for Event 2",
+      eventId: "1",
+      eventName: "Live Concert",
+      eventDate: "2024-06-15",
+      eventDescription: "Experience an electrifying night of live music with top artists.",
       image: "/assets/event2.jpg",
       eventLink: "/event-page",
     },
     {
-      eventId: 3,
-      eventName: "Event 3",
-      eventDescription: "Some Description for Event 3",
+      eventId: "2",
+      eventName: "Tech Conference",
+      eventDate: "2024-07-20",
+      eventDescription: "Dive into the latest in tech innovation and network with industry leaders.",
       image: "/assets/event3.jpg",
       eventLink: "/event-page",
     },
+    {
+      eventId: "3",
+      eventName: "Art Workshop",
+      eventDate: "2024-05-25",
+      eventDescription: "Explore your creativity in our interactive art workshops for all skill levels.",
+      image: "/assets/event4.jpg",
+      eventLink: "/event-page",
+    }
   ];
+
   return (
-    <section className="container mx-auto p-5">
+    <div className="text-color2">
+      {/* Hero Section */}
       <div
-        id="carouselExampleCrossfade"
-        className="relative lg:w-10/12  mx-auto bg-gray-100 rounded-lg shadow-2xl"
-        data-twe-carousel-init
-        data-twe-ride="carousel">
-        <div
-          className="absolute inset-x-0 bottom-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
-          data-twe-carousel-indicators>
-          <button
-            type="button"
-            data-twe-target="#carouselExampleCrossfade"
-            data-twe-slide-to="0"
-            data-twe-carousel-active
-            className="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-            aria-current="true"
-            aria-label="Slide 1"></button>
-          <button
-            type="button"
-            data-twe-target="#carouselExampleCrossfade"
-            data-twe-slide-to="1"
-            className="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-            aria-label="Slide 2"></button>
-          <button
-            type="button"
-            data-twe-target="#carouselExampleCrossfade"
-            data-twe-slide-to="2"
-            className="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-            aria-label="Slide 3"></button>
-        </div>
-
-        <div className="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
-          <div
-            className="relative float-left -mr-[100%] w-full !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
-            data-twe-carousel-fade
-            data-twe-carousel-item
-            data-twe-carousel-active>
-            <Image
-              src="/assets/event1.jpg"
-              className="block w-full h-full object-contain rounded-lg"
-              alt="Wild Landscape"
-              width={1080}
-              height={640}
-            />
-          </div>
-
-          <div
-            className="relative float-left -mr-[100%] hidden w-full !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
-            data-twe-carousel-fade
-            data-twe-carousel-item>
-            <Image
-              src="/assets/event2.jpg"
-              className="block w-full h-full object-contain rounded-lg"
-              alt="Camera"
-              width={1080}
-              height={640}
-            />
-          </div>
-
-          <div
-            className="relative float-left -mr-[100%] hidden w-full !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
-            data-twe-carousel-fade
-            data-twe-carousel-item>
-            <Image
-              src="/assets/event3.jpg"
-              className="block w-full h-full object-contain rounded-lg"
-              alt="Exotic Fruits"
-              width={1080}
-              height={640}
-            />
+        className="relative bg-cover bg-center h-screen"
+        style={{
+          backgroundImage: "url('/assets/hero.jpg')",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}>
+        <div className="absolute inset-0 bg-black opacity-60"></div>
+        <div className="absolute inset-0 flex items-center justify-center p-4">
+          <div className="text-center">
+            <h1 className="text-4xl font-extrabold">Discover Amazing Events</h1>
+            <p className="mt-4 text-lg max-w-md mx-auto">
+              Find the best events happening around you, from music festivals to
+              tech conferences.
+            </p>
           </div>
         </div>
-
-        <button
-          className="absolute bottom-0 left-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
-          type="button"
-          data-twe-target="#carouselExampleCrossfade"
-          data-twe-slide="prev">
-          <span className="inline-block h-8 w-8">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="h-6 w-6">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15.75 19.5L8.25 12l7.5-7.5"
-              />
-            </svg>
-          </span>
-          <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
-            Previous
-          </span>
-        </button>
-        <button
-          className="absolute bottom-0 right-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
-          type="button"
-          data-twe-target="#carouselExampleCrossfade"
-          data-twe-slide="next">
-          <span className="inline-block h-8 w-8">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="h-6 w-6">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M8.25 4.5l7.5 7.5-7.5 7.5"
-              />
-            </svg>
-          </span>
-          <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
-            Next
-          </span>
-        </button>
       </div>
-      <div className="my-[5rem]">
-        <div className="bg-color4 lg:w-10/12 mx-auto rounded-md">
-          <p class="text-5xl text-center font-bold text-color1 py-5 pt-[4rem]">
-            {" "}
-            <span>Main </span>
-            <br className="sm:hidden h-5" />
-            <span>Event</span>
-          </p>
-          <p class="text-lg text-center text-color2 underline">14th May 2024</p>
-          <p class="text-sm text-center text-color1 underline">Mark the Date</p>
-          <p class="text-md p-5">
-            {" "}
-            lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur.
-          </p>
-          <div className="flex flex-wrap w-full">
-            <div className="w-full md:w-4/6 p-2">
-              <div className="bg-white rounded-lg py-5">
-                <p className="text-center text-lg font-bold">Key Events</p>
-                <div className="flex flex-wrap justify-around">
-                  <ul className="list-disc p-5">
-                    <li className="break-words">Event 1</li>
-                    <li>Event 2</li>
-                    <li>Event 3</li>
-                    <li>Event 4</li>
-                  </ul>
-                  <ul className="list-disc p-5">
-                    <li>Event 1</li>
-                    <li>Event 2</li>
-                    <li>Event 3</li>
-                    <li>Event 4</li>
-                  </ul>
-                </div>
+      {/* Main Event Section */}
+      <div className=" py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-gradient-to-r from-color5 to-color4 rounded-lg shadow-xl p-8 md:p-12 lg:p-16">
+            <div className="flex flex-wrap justify-between items-center">
+              <div className="w-full lg:w-6/12">
+                <h2 className="text-3xl font-bold">Main Event of the Month</h2>
+                <p className="text-xl mt-2">Tech Innovation Conference 2024</p>
+                <p className="mt-4 text-lg">
+                  Join us on July 15, 2024, at the Downtown Convention Center
+                  for the leading tech conference of the year.
+                </p>
+                <ul className="list-disc list-inside mt-4">
+                  <li>Exclusive workshops and panels</li>
+                  <li>Networking with industry leaders</li>
+                  <li>Latest tech trends and innovations</li>
+                </ul>
+                <button
+                  onClick={handleBooknow}
+                  className="mt-4 inline-block bg-color6 text-color2 px-6 py-2 rounded hover:bg-color2 hover:text-color6 shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none">
+                  Book Now
+                </button>
               </div>
-            </div>
-            <div className="w-full md:w-2/6 p-2">
-              <div className="bg-white rounded-lg py-[3rem]">
-                <p className="text-center text-lg">Book your tickets now</p>
-                <div className="flex justify-center my-5">
-                  <button
-                    onClick={handleBooknow}
-                    className=" text-center bg-color3 hover:bg-color1 hover:text-color2 text-white p-2 rounded-md w-1/2">
-                    Book Now
-                  </button>
-                </div>
+              <div className="w-full lg:w-5/12 mt-8 lg:mt-0">
+                <Image
+                  src="/assets/tech.jpg"
+                  alt="Main Event"
+                  width={600}
+                  height={400}
+                  className="rounded-lg shadow-lg"
+                />
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <div className="flex flex-wrap justify-around">
-        {eventCardsHomaPageDetails.map((eventCard, index) => (
-          <EventCardsHomaPage key={index} {...eventCard} />
-        ))}
+      {/* Featured Events Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h2 className="text-3xl text-color3 font-bold text-center mb-[4rem]">
+          Featured Events of the Month
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {eventCardsHomaPageDetails.map((event) => (
+            <Featuredevents
+              key={event.eventId}
+              eventId={event.eventId}
+              eventName={event.eventName}
+              eventDescription={event.eventDescription}
+              eventImage={event.image}
+              eventDate={event.eventDate}
+            />
+          ))}
+        </div>
       </div>
-    </section>
+      {/* Testimonials Section */}
+      <div className="bg-color4 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl text-color2 font-bold text-center">
+            What Our Customers Say
+          </h2>
+        </div>
+        <div className="flex w-full justify-around">
+          <div className="w-5/6 bg-color2 p-[3rem] rounded-xl my-5">
+            <TestimonialCarousel />
+          </div>
+        </div>
+      </div>
+      {/* Footer (if not included in the navbar) */}
+      <footer className="bg-color5 text-color4 text-center py-4">
+        <p>
+          {" "}
+          <span className="text-color6"> © EVENTEASE </span> All rights
+          reserved.
+        </p>
+      </footer>
+    </div>
   );
-}
+};
+
+export default HomePage;

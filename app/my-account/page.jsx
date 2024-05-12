@@ -32,20 +32,19 @@ export default function Profile() {
   }, []);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-center bg-color3 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8 bg-white p-10 rounded-lg shadow-lg">
-        <h2 className="text-center text-2xl font-extrabold text-gray-900">
+        <h2 className="text-center text-2xl font-extrabold text-color5">
           Your Profile
         </h2>
         <div className="flex flex-col items-center">
           <Image
-            src="/assets/user.svg" 
+            src="/assets/user.svg"
             alt="Profile"
             className="w-24 h-24 rounded-full border-2 border-gray-200 mb-4"
             width={24}
-            height={24} 
+            height={24}
           />
-          
         </div>
         <form className="space-y-4">
           <div>
@@ -82,7 +81,7 @@ export default function Profile() {
           <div className="w-full flex justify-around">
             <Link
               href={changePasswordLink}
-              className=" bg-color3 text-white py-2 px-4 rounded-md hover:bg-color1 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+              className="mt-4 inline-block bg-color4 text-color2 px-6 py-2 rounded hover:bg-color3 shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none">
               Change Password
             </Link>
           </div>
