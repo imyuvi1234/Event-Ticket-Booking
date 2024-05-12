@@ -50,7 +50,10 @@ const Page = () => {
       redirect: "follow",
     };
 
-    fetch("http://localhost:8000/alleventdetails", requestOptions)
+    fetch(
+      "https://ticketing-backend-iiyn.onrender.com/alleventdetails",
+      requestOptions
+    )
       .then((response) => response.text())
       .then((result) => {
         setAllTasksPageCardDetails(JSON.parse(result));

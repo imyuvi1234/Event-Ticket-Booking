@@ -15,7 +15,10 @@ const page = ({ params }) => {
       redirect: "follow",
     };
 
-    fetch(`http://localhost:8000/eventdetails/${id}`, requestOptions)
+    fetch(
+      `https://ticketing-backend-iiyn.onrender.com/eventdetails/${id}`,
+      requestOptions
+    )
       .then((response) => response.text())
       .then((result) => {
         setEventPageDetails(JSON.parse(result));

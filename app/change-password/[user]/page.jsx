@@ -34,7 +34,10 @@ const Page = ({ params }) => {
       redirect: "follow",
     };
 
-    fetch("http://localhost:8000/changepassword", requestOptions)
+    fetch(
+      "https://ticketing-backend-iiyn.onrender.com/changepassword",
+      requestOptions
+    )
       .then((response) => response.text())
       .then((result) => {
         window.location.href = "/my-account";

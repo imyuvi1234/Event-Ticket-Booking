@@ -14,9 +14,8 @@ const Login = () => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
-    console.log( loginFormDetail);
+    console.log(loginFormDetail);
     const raw = JSON.stringify(loginFormDetail);
-    
 
     const requestOptions = {
       method: "POST",
@@ -25,9 +24,7 @@ const Login = () => {
       redirect: "follow",
     };
 
-
-
-    fetch("http://localhost:8000/login", requestOptions)
+    fetch("https://ticketing-backend-iiyn.onrender.com/login", requestOptions)
       .then((response) => response.text())
       .then((result) => {
         var ResultObj = JSON.parse(result);

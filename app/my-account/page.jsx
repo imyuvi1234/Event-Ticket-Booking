@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 export default function Profile() {
-
   let changePasswordLink = "/change-password/";
   if (typeof window !== "undefined") {
     const username = window.localStorage.getItem("username");
@@ -18,7 +17,7 @@ export default function Profile() {
     };
 
     fetch(
-      `http://localhost:8000/userdetails?username=${localStorage.getItem(
+      `https://ticketing-backend-iiyn.onrender.com/userdetails?username=${localStorage.getItem(
         "username"
       )}`,
       requestOptions
@@ -77,15 +76,13 @@ export default function Profile() {
             />
           </div>
 
-          
-            <div className="w-full flex justify-around">
-              <Link
-                href={changePasswordLink}
-                className=" bg-color3 text-white py-2 px-4 rounded-md hover:bg-color1 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                Change Password
-              </Link>
-            </div>
-          
+          <div className="w-full flex justify-around">
+            <Link
+              href={changePasswordLink}
+              className=" bg-color3 text-white py-2 px-4 rounded-md hover:bg-color1 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+              Change Password
+            </Link>
+          </div>
         </form>
       </div>
     </div>

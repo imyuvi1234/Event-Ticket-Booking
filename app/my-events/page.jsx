@@ -35,7 +35,6 @@ import React, { useEffect, useState } from "react";
 //   );
 // };
 
-
 const MyTasksPageCard = ({
   event_id,
   event_date,
@@ -85,15 +84,13 @@ const page = () => {
       setLoading(false);
     }, 2000);
 
-    
-
     const requestOptions = {
       method: "GET",
       redirect: "follow",
     };
 
     fetch(
-      `http://localhost:8000/usereventdetails/${userIDDetails}`,
+      `https://ticketing-backend-iiyn.onrender.com/usereventdetails/${userIDDetails}`,
       requestOptions
     )
       .then((response) => response.text())
@@ -101,7 +98,6 @@ const page = () => {
         const ResultObj = JSON.parse(result);
         console.log(ResultObj);
         setMyTasksPageCardDetails(ResultObj);
-        
       })
       .catch((error) => console.error(error));
   }, []);

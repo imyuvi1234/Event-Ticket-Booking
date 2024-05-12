@@ -26,7 +26,7 @@ const SignUp = () => {
       redirect: "follow",
     };
 
-    fetch("http://localhost:8000/signup", requestOptions)
+    fetch("https://ticketing-backend-iiyn.onrender.com/signup", requestOptions)
       .then((response) => response.text())
       .then((result) => {
         var ResultObj = JSON.parse(result);
