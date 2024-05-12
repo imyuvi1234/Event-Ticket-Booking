@@ -1,4 +1,3 @@
-// pages/profile.js
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -40,7 +39,7 @@ export default function Profile() {
         </h2>
         <div className="flex flex-col items-center">
           <Image
-            src="/assets/user.svg" // Replace with the path to your profile image
+            src="/assets/user.svg" 
             alt="Profile"
             className="w-24 h-24 rounded-full border-2 border-gray-200 mb-4"
             width={24}

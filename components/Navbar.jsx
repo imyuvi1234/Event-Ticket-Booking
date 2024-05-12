@@ -1,4 +1,3 @@
-// components/Navbar.js
 "use client";
 import { useContext, useState } from "react";
 import Link from "next/link";

@@ -65,72 +65,7 @@ const Page = () => {
       .catch((error) => console.error(error));
   }, []);
 
-  // const allTasksPageCardDetails = [
-  //   {
-  //     eventID: 1,
-  //     eventTitle: "Event 1",
-  //     eventDescription:
-  //       "Event 1 Description and some more text to make it look like a description.",
-  //     eventImageURL: "/assets/event1.jpg",
-  //     eventLink: "/event-page",
-  //   },
-  //   {
-  //     eventID: 2,
-  //     eventTitle: "Event 2",
-  //     eventDescription:
-  //       "Event 2 Description and some more text to make it look like a description.",
-  //     eventImageURL: "/assets/event2.jpg",
-  //     eventLink: "/event-page",
-  //   },
-  //   {
-  //     eventID: 3,
-  //     eventTitle: "Event 3",
-  //     eventDescription:
-  //       "Event 3 Description and some more text to make it look like a description.",
-  //     eventImageURL: "/assets/event3.jpg",
-  //     eventLink: "/event-page",
-  //   },
-  //   {
-  //     eventID: 4,
-  //     eventTitle: "Event 4",
-  //     eventDescription:
-  //       "Event 4 Description and some more text to make it look like a description.",
-  //     eventImageURL: "/assets/event1.jpg",
-  //     eventLink: "/event-page",
-  //   },
-  //   {
-  //     eventID: 5,
-  //     eventTitle: "Event 5",
-  //     eventDescription:
-  //       "Event 5 Description and some more text to make it look like a description.",
-  //     eventImageURL: "/assets/event2.jpg",
-  //     eventLink: "/event-page",
-  //   },
-  //   {
-  //     eventID: 6,
-  //     eventTitle: "Event 6",
-  //     eventDescription:
-  //       "Event 6 Description and some more text to make it look like a description.",
-  //     eventImageURL: "/assets/event3.jpg",
-  //     eventLink: "/event-page",
-  //   },
-  //   {
-  //     eventID: 7,
-  //     eventTitle: "Event 7",
-  //     eventDescription:
-  //       "Event 7 Description and some more text to make it look like a description.",
-  //     eventImageURL: "/assets/event1.jpg",
-  //     eventLink: "/event-page",
-  //   },
-  //   {
-  //     eventID: 8,
-  //     eventTitle: "Event 8",
-  //     eventDescription:
-  //       "Event 8 Description and some more text to make it look like a description.",
-  //     eventImageURL: "/assets/event2.jpg",
-  //     eventLink: "/event-page",
-  //   },
-  // ];
+
 
   return (
     <div>
