@@ -62,7 +62,7 @@ const Login = () => {
   return (
     <div
       data-aos="fade-left"
-      className="w-4/6 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
+      className="w-4/6 bg-color2 h-4/6 my-auto flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div>
         <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
           Welcome Back
@@ -147,25 +147,27 @@ const Login = () => {
           </div>
         </div> */}
 
-        <div>
+        <div className="w-full flex justify-around">
           <button
             type="submit"
-            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-sm text-white bg-color3 hover:bg-color1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            className="mt-4 inline-block bg-color4 text-color2 px-12 py-2 rounded hover:bg-color3 shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none">
             Log in
           </button>
         </div>
       </form>
       <div className="mt-4">
-        <span>Don&apos;t have an account? </span>
-        <span>
-          <button
-            className="underline"
-            onClick={() => {
-              setLoginState((prev) => !prev);
-            }}>
-            Sign up
-          </button>
-        </span>
+        <p className="text-center">
+          <span>Don&apos;t have an account? </span>
+          <span>
+            <button
+              className="underline"
+              onClick={() => {
+                setLoginState((prev) => !prev);
+              }}>
+              Sign up
+            </button>
+          </span>
+        </p>
       </div>
     </div>
   );

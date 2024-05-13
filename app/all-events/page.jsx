@@ -4,13 +4,10 @@ import React, { useEffect, useState } from "react";
 
 
 const Page = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [allTasksPageCardDetails, setAllTasksPageCardDetails] = useState([]);
 
   useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
 
     const requestOptions = {
       method: "GET",
@@ -25,6 +22,7 @@ const Page = () => {
       .then((result) => {
         const ResultObj = JSON.parse(result);
         setAllTasksPageCardDetails(ResultObj);
+        setLoading(false);
         console.log(ResultObj);
       })
       .catch((error) => console.error(error));

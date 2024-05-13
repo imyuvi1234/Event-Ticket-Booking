@@ -1,9 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { useToast } from "@chakra-ui/react";
 
 const Page = ({ params }) => {
   const { id } = params;
-
+  const toast = useToast();
   const [bookingDetailsInfo, setBookingDetailsInfo] = useState({});
   const [bookingPageDetails, setBookingPageDetails] = useState(false);
 
@@ -46,7 +47,28 @@ const Page = ({ params }) => {
 
     fetch("https://ticketing-backend-iiyn.onrender.com/booking", requestOptions)
       .then((response) => response.text())
-      .then((result) => console.log(result))
+      .then((result) => {
+        const ResultObj = JSON.parse(result);
+        console.log(ResultObj);
+        if (ResultObj.message === "Booking successful!") {
+          setBookingDetailsInfo({ ...bookingDetailsInfo, ticket_number: "" });
+          toast({
+            title: "Hooraay!",
+            description: "Booking Successful!",
+            status: "success",
+            duration: 9000,
+            isClosable: true,
+          });
+        } else {
+          toast({
+            title: "Error!",
+            description: "Booking Failed",
+            status: "error",
+            duration: 9000,
+            isClosable: true,
+          });
+        }
+      })
       .catch((error) => console.error(error));
 
     console.log(bookingDetailsInfo);
@@ -87,6 +109,7 @@ const Page = ({ params }) => {
                   type="number"
                   min={1}
                   max={2}
+                  value={bookingDetailsInfo.ticket_number}
                   onChange={(e) => {
                     setBookingDetailsInfo({
                       ...bookingDetailsInfo,

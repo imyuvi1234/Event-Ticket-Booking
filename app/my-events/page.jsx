@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 
 
 const Page = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const userIDDetails =
     typeof window !== "undefined"
@@ -15,9 +15,7 @@ const Page = () => {
   const [myTasksPageCardDetails, setMyTasksPageCardDetails] = useState([]);
 
   useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
+   
 
     const requestOptions = {
       method: "GET",
@@ -33,6 +31,7 @@ const Page = () => {
         const ResultObj = JSON.parse(result);
         console.log(ResultObj);
         setMyTasksPageCardDetails(ResultObj);
+        setLoading(false);
       })
       .catch((error) => console.error(error));
   }, []);
