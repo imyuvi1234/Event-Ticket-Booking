@@ -71,6 +71,7 @@ const TestimonialCarousel = () => {
             stroke-width="1.5"
             stroke="currentColor"
             class="h-6 w-6">
+            {/* eslint-disable-next-line react/no-unknown-property */}
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
