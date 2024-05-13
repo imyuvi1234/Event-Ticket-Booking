@@ -23,9 +23,9 @@ const TestimonialCarousel = () => {
           data-twe-carousel-item
           style={{ backfaceVisibility: "hidden" }}>
           <p class="mx-auto max-w-4xl text-xl italic text-neutral-700 dark:text-neutral-300">
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit,
-            error amet numquam iure provident voluptate esse quasi, voluptas
-            nostrum quisquam!"
+            &ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Fugit, error amet numquam iure provident voluptate esse quasi,
+            voluptas nostrum quisquam!&rdquo;
           </p>
 
           <p class="text-color6 mt-5 dark:text-neutral-300">- Anna Morian</p>
@@ -36,9 +36,9 @@ const TestimonialCarousel = () => {
           data-twe-carousel-item
           style={{ backfaceVisibility: "hidden" }}>
           <p class="mx-auto max-w-4xl text-xl italic text-neutral-700 dark:text-neutral-300">
-            "Neque cupiditate assumenda in maiores repudiandae mollitia adipisci
-            maiores repudiandae mollitia consectetur adipisicing architecto elit
-            sed adipiscing elit."
+            &ldquo;Neque cupiditate assumenda in maiores repudiandae mollitia
+            adipisci maiores repudiandae mollitia consectetur adipisicing
+            architecto elit sed adipiscing elit.&rdquo;
           </p>
 
           <p class="text-color6 mt-5 dark:text-neutral-300">- Teresa May</p>
@@ -49,9 +49,9 @@ const TestimonialCarousel = () => {
           data-twe-carousel-item
           style={{ backfaceVisibility: "hidden" }}>
           <p class="mx-auto max-w-4xl text-xl italic text-neutral-700 dark:text-neutral-300">
-            "Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur est laborum neque cupiditate
-            assumenda in maiores."
+            &ldquo;Duis aute irure dolor in reprehenderit in voluptate velit
+            esse cillum dolore eu fugiat nulla pariatur est laborum neque
+            cupiditate assumenda in maiores.&rdquo;
           </p>
 
           <p class="text-color6 mt-5 dark:text-neutral-300">- Kate Allise</p>
