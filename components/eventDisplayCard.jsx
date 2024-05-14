@@ -6,6 +6,7 @@ const EventDisplayCard = ({
   event_date,
   event_title,
   event_description,
+  ticket_number
 }) => {
   return (
     <div className="md:w-4/6 mx-auto m-5">
@@ -30,11 +31,15 @@ const EventDisplayCard = ({
             {event_description}
           </p>
           <div className="mt-4 flex justify-center md:justify-start">
-            <a
-              href={`/event-page/${event_id}`}
-              className="mt-4 inline-block bg-color4 text-color2 px-6 py-2 rounded hover:bg-color3 shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none">
-              Browse Event
-            </a>
+            {ticket_number === 0  ? (
+              <a
+                href={`/event-page/${event_id}`}
+                className="mt-4 inline-block bg-color4 text-color2 px-6 py-2 rounded hover:bg-color3 shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none">
+                Browse Event
+              </a>
+            ) : (
+              <></>
+            )}
           </div>
         </div>
       </div>

@@ -2,20 +2,23 @@
 import EventDisplayCard from "@/components/eventDisplayCard";
 import React, { useEffect, useState } from "react";
 
-
 const Page = () => {
   const [loading, setLoading] = useState(true);
   const [allTasksPageCardDetails, setAllTasksPageCardDetails] = useState([]);
 
-  useEffect(() => {
+  const userIDDetails =
+    typeof window !== "undefined"
+      ? window.localStorage.getItem("userid")
+      : null;
 
+  useEffect(() => {
     const requestOptions = {
       method: "GET",
       redirect: "follow",
     };
 
     fetch(
-      "https://ticketing-backend-iiyn.onrender.com/alleventdetails",
+      `https://ticketing-backend-iiyn.onrender.com/alleventdetails?user_id=${userIDDetails}`,
       requestOptions
     )
       .then((response) => response.text())
@@ -27,8 +30,6 @@ const Page = () => {
       })
       .catch((error) => console.error(error));
   }, []);
-
-
 
   return (
     <div>

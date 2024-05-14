@@ -5,40 +5,42 @@ import TestimonialCarousel from "@/components/testimonial";
 import Featuredevents from "@/components/featuredevents";
 
 const HomePage = () => {
-
-   const handleBooknow = () => {
-     if (window.localStorage.getItem("isUserLoggedIn") === "true") {
-       window.location.href = "/booking-page/1";
-     } else {
-       window.location.href = "/signIn";
-     }
-   };
+  const handleBooknow = () => {
+    if (window.localStorage.getItem("isUserLoggedIn") === "true") {
+      window.location.href = "/booking-page/14";
+    } else {
+      window.location.href = "/signIn";
+    }
+  };
 
   const eventCardsHomaPageDetails = [
     {
-      eventId: "1",
+      eventId: "15",
       eventName: "Live Concert",
       eventDate: "2024-06-15",
-      eventDescription: "Experience an electrifying night of live music with top artists.",
-      image: "/assets/event2.jpg",
+      eventDescription:
+        "Experience an electrifying night of live music with top artists.",
+      image: "/assets/event15.jpg",
       eventLink: "/event-page",
     },
     {
-      eventId: "2",
+      eventId: "16",
       eventName: "Tech Conference",
       eventDate: "2024-07-20",
-      eventDescription: "Dive into the latest in tech innovation and network with industry leaders.",
-      image: "/assets/event3.jpg",
+      eventDescription:
+        "Dive into the latest in tech innovation and network with industry leaders.",
+      image: "/assets/event16.jpg",
       eventLink: "/event-page",
     },
     {
-      eventId: "3",
+      eventId: "17",
       eventName: "Art Workshop",
       eventDate: "2024-05-25",
-      eventDescription: "Explore your creativity in our interactive art workshops for all skill levels.",
-      image: "/assets/event4.jpg",
+      eventDescription:
+        "Explore your creativity in our interactive art workshops for all skill levels.",
+      image: "/assets/event17.jpg",
       eventLink: "/event-page",
-    }
+    },
   ];
 
   return (
@@ -87,7 +89,7 @@ const HomePage = () => {
               </div>
               <div className="w-full lg:w-5/12 mt-8 lg:mt-0">
                 <Image
-                  src="/assets/tech.jpg"
+                  src="/assets/event14.jpg"
                   alt="Main Event"
                   width={600}
                   height={400}

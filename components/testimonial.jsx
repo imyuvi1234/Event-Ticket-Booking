@@ -23,12 +23,10 @@ const TestimonialCarousel = () => {
           data-twe-carousel-item
           style={{ backfaceVisibility: "hidden" }}>
           <p class="mx-auto max-w-4xl text-xl italic text-neutral-700 dark:text-neutral-300">
-            &ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Fugit, error amet numquam iure provident voluptate esse quasi,
-            voluptas nostrum quisquam!&rdquo;
+            Very enganging and interactive platform. I was able to book tickets
           </p>
 
-          <p class="text-color6 mt-5 dark:text-neutral-300">- Anna Morian</p>
+          <p class="text-color6 mt-5 dark:text-neutral-300">- Jousha Almeda</p>
         </div>
 
         <div
@@ -36,12 +34,12 @@ const TestimonialCarousel = () => {
           data-twe-carousel-item
           style={{ backfaceVisibility: "hidden" }}>
           <p class="mx-auto max-w-4xl text-xl italic text-neutral-700 dark:text-neutral-300">
-            &ldquo;Neque cupiditate assumenda in maiores repudiandae mollitia
-            adipisci maiores repudiandae mollitia consectetur adipisicing
-            architecto elit sed adipiscing elit.&rdquo;
+            Easy to use and very user friendly. I was able to book tickets in
           </p>
 
-          <p class="text-color6 mt-5 dark:text-neutral-300">- Teresa May</p>
+          <p class="text-color6 mt-5 dark:text-neutral-300">
+            - Khushboo Shamnani
+          </p>
         </div>
 
         <div
@@ -49,12 +47,10 @@ const TestimonialCarousel = () => {
           data-twe-carousel-item
           style={{ backfaceVisibility: "hidden" }}>
           <p class="mx-auto max-w-4xl text-xl italic text-neutral-700 dark:text-neutral-300">
-            &ldquo;Duis aute irure dolor in reprehenderit in voluptate velit
-            esse cillum dolore eu fugiat nulla pariatur est laborum neque
-            cupiditate assumenda in maiores.&rdquo;
+            Simple UI, was able to book tickets in no time. Great experience
           </p>
 
-          <p class="text-color6 mt-5 dark:text-neutral-300">- Kate Allise</p>
+          <p class="text-color6 mt-5 dark:text-neutral-300">- Prithvi</p>
         </div>
       </div>
 
